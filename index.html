@@ -29,7 +29,7 @@
         </div>
         <form class="search-bar" id="search-city">
           <div class="row">
-            <div class="col-9">
+            <div class="col-6">
               <input
                 type="search"
                 placeholder="Type a city..."
@@ -45,26 +45,34 @@
                 class="form-control btn btn-primary shadow"
               />
             </div>
+            <div class="col-3">
+              <button
+                class="btn btn-success w-100"
+                id="current-location-button"
+              >
+                Current
+              </button>
+            </div>
           </div>
         </form>
         <p class="format">format: farenheight - <a href="">celsius</a></p>
-        <h1>Rotterdam</h1>
-        <h2>Monday, March 20, 2023</h2>
-        <p class="time">12:05</p>
-        <p class="cloudy">Cloudy</p>
+        <h1 id="city"></h1>
+        <h2 id="current-date">Monday, March 20, 2023</h2>
+        <p class="time" id="current-time">12:05</p>
+        <p class="cloudy" id="weather-description">Cloudy</p>
         <div class="row row-cloud">
           <div class="col">☁️</div>
         </div>
         <div class="row row-temperature">
-          <div class="col-12">42°F | 5.5°C</div>
-          <div class="col-12">32°F | °C</div>
+          <div class="col-12" id="temperature-high">42°F | °C</div>
+          <div class="col-12" id="temperature-low">32°F | °C</div>
         </div>
         <div class="row row-forecast">
           <div class="col-9">
             <ul>
-              <li>Precipitation: 12%</li>
-              <li>Humidity: 68%</li>
-              <li>Wind: 20m/h</li>
+              <li id="precipitation">Precipitation: 12%</li>
+              <li id="humidity">Humidity: 68%</li>
+              <li id="wind">Wind: 20m/h</li>
             </ul>
           </div>
         </div>

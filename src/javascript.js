@@ -1,51 +1,95 @@
-let now = new Date();
+function formatDate(date) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-let date = now.getDate();
-let hours = now.getHours();
-let minutes = now.getMinutes();
-let year = now.getFullYear();
-let day = days[now.getDay()];
-let month = months[now.getMonth()];
-
-let currentDate = document.querySelector("h2");
-currentDate.innerHTML = `${day},   ${month} ${date},   ${year}`;
-let time = document.querySelector(".time");
-time.innerHTML = `${hours}:${minutes}`;
-
-function search(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#submit-city");
-  let cityName = document.querySelector("h1");
-  if (searchInput.value) {
-    cityName.innerHTML = `${searchInput.value}`;
-  } else {
-    cityName.innerHTML = null;
-    alert("Please type a city");
+  let date = date.getDate();
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let year = date.getFullYear();
+  let day = days[date.getDay()];
+  let month = months[date.getMonth()];
+
+  let currentDate = document.querySelector("#current-date");
+  currentDate.innerHTML = `${day},   ${month} ${date},   ${year}`;
+  let time = document.querySelector("#current-time");
+  time.innerHTML = `${hours}:${minutes}`;
 }
+
+function showWeather(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature-high").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].main;
+}
+
+function search(city) {
+  let apiKey = "7a5da8ff0df86dae2b7558aacdcfe231";
+  let unit = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showWeather);
+}
+
+function citySubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#submit-city").value;
+  search(city);
+}
+
+function searchLocation(position) {
+  let apiKey = "7a5da8ff0df86dae2b7558aacdcfe231";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let unit = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showWeather);
+}
+
+function showPosition(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+let currentDate = document.querySelector("#current-date");
+let currentTime = new Date();
+currentDate.innerHTML = formatDate(currentTime);
+
 let form = document.querySelector("#search-city");
-form.addEventListener("submit", search);
+form.addEventListener("submit", citySubmit);
+
+let currentButton = document.querySelector("#current-location-button");
+currentButton.addEventListener("click", showPosition);
+
+search("New York");
