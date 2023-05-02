@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <title>Weather App</title>
   </head>
   <body>
@@ -57,22 +58,19 @@
         </form>
         <p class="format">format: farenheight - <a href="">celsius</a></p>
         <h1 id="city"></h1>
-        <h2 id="current-date">Monday, March 20, 2023</h2>
-        <p class="time" id="current-time">12:05</p>
-        <p class="cloudy" id="weather-description">Cloudy</p>
+        <h2 id="current-date"></h2>
+        <p class="cloudy" id="weather-description"></p>
         <div class="row row-cloud">
           <div class="col">☁️</div>
         </div>
         <div class="row row-temperature">
-          <div class="col-12" id="temperature-high">42°F | °C</div>
-          <div class="col-12" id="temperature-low">32°F | °C</div>
-        </div>
+          <div class="col-12"><span id="temperature-high"></span>°C | °F</div>
         <div class="row row-forecast">
           <div class="col-9">
             <ul>
               <li id="precipitation">Precipitation: 12%</li>
-              <li id="humidity">Humidity: 68%</li>
-              <li id="wind">Wind: 20m/h</li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span> km/h</li>
             </ul>
           </div>
         </div>
@@ -98,31 +96,23 @@
             </div>
             <div class="row row-degrees-high">
               <div class="col">
-                <strong>54°F</strong>
+                <strong>6</strong>
               </div>
               <div class="col">
-                <strong>51°F</strong>
+                <strong>8</strong>
               </div>
               <div class="col">
-                <strong>61°</strong>
+                <strong>9</strong>
               </div>
               <div class="col">
-                <strong>58°F</strong>
+                <strong>7</strong>
               </div>
               <div class="col">
-                <strong>65°F</strong>
+                <strong>10</strong>
               </div>
               <div class="col">
-                <strong>48°F</strong>
+                <strong>12</strong>
               </div>
-            </div>
-            <div class="row row-degrees-low">
-              <div class="col">41°F | 5°C</div>
-              <div class="col">39°F | 3.8°C</div>
-              <div class="col">48°F | 14.4°C</div>
-              <div class="col">44°F | 6.6°C</div>
-              <div class="col">49°F | 9.4°C</div>
-              <div class="col">34°F | 1.1°C</div>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ function formatDate(date) {
     "December",
   ];
 
-  let date = date.getDate();
+  let myDate = date.getDate();
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -36,23 +36,27 @@ function formatDate(date) {
   let day = days[date.getDay()];
   let month = months[date.getMonth()];
 
-  let currentDate = document.querySelector("#current-date");
-  currentDate.innerHTML = `${day},   ${month} ${date},   ${year}`;
-  let time = document.querySelector("#current-time");
-  time.innerHTML = `${hours}:${minutes}`;
+  return `${day}, ${month} ${myDate}, ${year} - ${hours}:${minutes}`;
 }
 
 function showWeather(response) {
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temperature-high").innerHTML = Math.round(
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description;
+  document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
+  //document.querySelector("#temperature-high").innerHTML = Math.round(
+  //  response.data.main.temp_max
+  //);
+  //document.querySelector("#temperature-low").innerHTML = Math.round(
+  //  response.data.main.temp_min
+  //);
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
-  document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].main;
+  console.log(response);
 }
 
 function search(city) {
