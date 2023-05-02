@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-app">
+        <div class="row row-cities">
+          <div class="col">New York</div>
+          <div class="col">London</div>
+          <div class="col">Paris</div>
+          <div class="col">Tokyo</div>
+          <div class="col">Sydney</div>
+          <div class="col">São Paulo</div>
+          <div class="col">Lagos</div>
+          <div class="col">Tel Aviv</div>
+          <div class="col">Toronto</div>
+        </div>
+        <form class="search-bar" id="search-city">
+          <div class="row">
+            <div class="col-9">
+              <input
+                type="search"
+                placeholder="Type a city..."
+                autofocus="on"
+                class="form-control shadow"
+                id="submit-city"
+              />
+            </div>
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Search"
+                class="form-control btn btn-primary shadow"
+              />
+            </div>
+          </div>
+        </form>
+        <p class="format">format: farenheight - <a href="">celsius</a></p>
+        <h1>Rotterdam</h1>
+        <h2>Monday, March 20, 2023</h2>
+        <p class="time">12:05</p>
+        <p class="cloudy">Cloudy</p>
+        <div class="row row-cloud">
+          <div class="col">☁️</div>
+        </div>
+        <div class="row row-temperature">
+          <div class="col-12">42°F | 5.5°C</div>
+          <div class="col-12">32°F | °C</div>
+        </div>
+        <div class="row row-forecast">
+          <div class="col-9">
+            <ul>
+              <li>Precipitation: 12%</li>
+              <li>Humidity: 68%</li>
+              <li>Wind: 20m/h</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>7 Day Forecast</h3>
+        <div class="card">
+          <div class="card-body">
+            <div class="row row-days">
+              <div class="col">Tuesday</div>
+              <div class="col">Wednesday</div>
+              <div class="col">Thursday</div>
+              <div class="col">Friday</div>
+              <div class="col">Saturday</div>
+              <div class="col">Sunday</div>
+            </div>
+            <div class="row row-weather-icons">
+              <div class="col">🌦</div>
+              <div class="col">🌤</div>
+              <div class="col">☀️</div>
+              <div class="col">🌧</div>
+              <div class="col">☀️</div>
+              <div class="col">⛈</div>
+            </div>
+            <div class="row row-degrees-high">
+              <div class="col">
+                <strong>54°F</strong>
+              </div>
+              <div class="col">
+                <strong>51°F</strong>
+              </div>
+              <div class="col">
+                <strong>61°</strong>
+              </div>
+              <div class="col">
+                <strong>58°F</strong>
+              </div>
+              <div class="col">
+                <strong>65°F</strong>
+              </div>
+              <div class="col">
+                <strong>48°F</strong>
+              </div>
+            </div>
+            <div class="row row-degrees-low">
+              <div class="col">41°F | 5°C</div>
+              <div class="col">39°F | 3.8°C</div>
+              <div class="col">48°F | 14.4°C</div>
+              <div class="col">44°F | 6.6°C</div>
+              <div class="col">49°F | 9.4°C</div>
+              <div class="col">34°F | 1.1°C</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/javascript.js"></script>
+  </body>
+</html>
